@@ -21,7 +21,18 @@ class word:
             return True
         
         else:
+            tmpword=self.local_word
             print("Wrong!")
+            for i in range(5):
+                if guess[i] == self.local_word[i]:
+                    print("\033[1;32;40m▉\n")
+                    tmpword[i]="*"
+                else:
+                    if guess[i] in tmpword:
+                        print("\033[1;33;40m▉\n")
+                    else:
+                        print("\033[1;37;40m▉\n")
+
             return False
 
 
