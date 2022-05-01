@@ -17,22 +17,28 @@ class word:
         self.guess = guess
         
         if guess == self.local_word:
-            print("rätt") 
+            print("Correct!") 
             return True
         
         else:
-            print("fel")
+            print("Wrong!")
             return False
 
 
 class game:
     
     def __init__(self):
+        self.guesses = 0
+        self.max_guesses = 6
         my_word = word()
-        while True:
-            my_word.compare(input("Enter a word: "))
-            
-    
+        
+        while self.guesses<self.max_guesses:
+            self.guesses = self.guesses + 1
+            print("Guesses:", self.guesses)
+            if my_word.compare(input("Enter a word: ")):
+                break
+                
+        
 def main():
     game()
 
