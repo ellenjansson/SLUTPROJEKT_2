@@ -1,10 +1,7 @@
 import random
+from collections import Counter
 
 class word:
-
-    def get_word():
-        pass    
-        
 
     def __init__(self):
         f = open("words.txt", "r")
@@ -17,30 +14,39 @@ class word:
         self.guess = guess
         
         if guess == self.local_word:
-            print("Correct!") 
+            print("\nCorrect!") 
+            print("\033[1;32;40m▉" * 5)
             return True
-        
+
         else:
-            tmpword=self.local_word
             print("Wrong!")
-            for i in range(5):
+            color_matrix = []
+            chars = Counter(self.local_word)            
+            for i in range(len(self.local_word)):
                 if guess[i] == self.local_word[i]:
-                    print("\033[1;32;40m▉\n")
-                    tmpword[i]="*"
+                    color_matrix.append("\033[1;32;40m▉")
+                    chars[guess[i]] -= 1
+                elif guess[i] in self.local_word:
+                    color_matrix.append("\033[1;33;40m▉")
                 else:
-                    if guess[i] in tmpword:
-                        print("\033[1;33;40m▉\n")
-                    else:
-                        print("\033[1;37;40m▉\n")
-
-            return False
-
-
+                    color_matrix.append("\033[1;37;40m▉")
+            
+            counter = 0
+            for color, char in zip(color_matrix, self.local_word):
+                if color == "\033[1;33;40m▉" and chars[char] >= 0:
+                    color_matrix[counter] = "\033[1;37;40m▉"
+                counter += 1
+            for color in color_matrix:
+                print(color, end = " ")
+            print()
+        return False
 class game:
     
     def __init__(self):
         self.guesses = 0
         self.max_guesses = 6
+        
+    def play_game(self):
         my_word = word()
         
         while self.guesses<self.max_guesses:
@@ -48,10 +54,10 @@ class game:
             print("Guesses:", self.guesses)
             if my_word.compare(input("Enter a word: ")):
                 break
-                
         
 def main():
-    game()
+    new_game = game()
+    new_game.play_game()
 
 
 if __name__ == "__main__":
