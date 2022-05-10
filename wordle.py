@@ -119,7 +119,7 @@ class Game:
                 os.system('cls')
                 self.__init__()
                 self.play_game()
-            elif else_restart == "y":
+            elif else_restart == "n":
                 exit()
             else:
                 print("You are too dumb to play this game...")
