@@ -6,31 +6,28 @@ from collections import Counter
 from colorama import init
 init()
 
+
+# Constants that have ANSI-code which is used to color boxes in the code. The line is used inbetween guesses in the console.
 BOX = "▉"
 GREEN = "\033[1;32;40m"
 YELLOW = "\033[1;33;40m"
 WHITE = "\033[1;37;40m"
 LINE = "______________"
 
-# TODO:
-# - Fixa docstring
-# - Fixa korrekt namngivning - 
-# - Fixa längd på gissning (Inte mer eller mindre än 5) -
-# - Låt användaren avsluta spelet (rensa konsollen innan nästa spel?) -
 
 class Word:
 
-    #En funktion som öppnar en text fil och gör den till en variabel self.local_word som kan användas i koden. 
     def __init__(self):
+        """Opens a word txt file and makes the words into a variable that can be used in the code.
+        """
         f = open("words.txt", "r")
         words = f.read().splitlines()
         f.close()
         self.local_word = random.choice(words)
         print (self.local_word)
             
-    #Funktion med en guess variabel som används till att korrigera om det gissade ordet är korrekt eller inte. 
     def compare(self, guess):
-        """_summary_
+        """Function that compares the guess word with the correct word. 
 
         Args:
             guess (string): The word that the user guessed
@@ -41,21 +38,16 @@ class Word:
     
         self.guess = guess
         
-        #En if-sats som kollar om det gissade ordet är lika med self.local_word (det slumpmässiga ordet)
-        #Om self.local_word är lika med det gissade ordet skrivs det ut att man har rätt och 5 färgade rutor blir färgade grönt.
         if guess == self.local_word:
             print("\nCorrect!") 
             print(GREEN, BOX * 5)
             return True
         
-        #Om self.local_word inte matchar det gissade ordet skrivs det ut att man har fel.
         else:
             print("Wrong!")
-            #Här läser programmet igenom alla bokstäver i det gissade ordet och kollar vilka bokstäver som matchar in med det slumpmässiga ordet från self.local_word.
             color_matrix = []
             chars = Counter(self.local_word)            
             for i in range(len(self.local_word)):
-                #Om bokstaven från det gissade ordet är på samma plats som bokstaven från self.local_word blir den motsvarande rutan till den bokstaven grön. 
                 if guess[i] == self.local_word[i]:
                     color_matrix.append(GREEN + BOX)
                     chars[guess[i]] -= 1
@@ -63,7 +55,6 @@ class Word:
                     color_matrix.append(YELLOW + BOX)
                 else:
                     color_matrix.append(WHITE + BOX)
-            #Här kollar programmet 
             counter = 0
             for color, char in zip(color_matrix, self.local_word):
                 if color == YELLOW+BOX and chars[char] >= 0:
@@ -82,6 +73,11 @@ class Game:
         self.max_guesses = 6
         
     def play_game(self):
+        """
+           A function which initializes the game and sends out a restart option that clears the console. 
+           The function also includes a guess counter aswell as a letter interval that corrects you if you 
+           write a too short/long word. 
+        """
         my_word = Word()
         
         while self.guesses<self.max_guesses:
@@ -100,8 +96,8 @@ class Game:
                 if my_word.compare(self.tmp_guess):
                     break
             
-        print(WHITE + LINE * 5)
-        restart = input("\nDo you want to restart the game? (y/n): ")
+        print(WHITE + LINE)
+        restart = input("Do you want to restart the game? (y/n): ")
         
         if restart == "y":
             print("\nThe game will now restart")
