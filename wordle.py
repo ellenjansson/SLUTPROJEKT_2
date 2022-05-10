@@ -10,6 +10,7 @@ BOX = "▉"
 GREEN = "\033[1;32;40m"
 YELLOW = "\033[1;33;40m"
 WHITE = "\033[1;37;40m"
+LINE = "______________"
 
 # TODO:
 # - Fixa docstring
@@ -84,13 +85,14 @@ class Game:
         my_word = Word()
         
         while self.guesses<self.max_guesses:
+            print(WHITE + LINE)
             self.tmp_guess = input("Enter a word: ")
 
             if (len(self.tmp_guess)<5):
-                print("Too short word!")
+                print("\nToo short word, guess again!\n")
                 
             elif (len(self.tmp_guess)>5):        
-                print("Too long word!")
+                print("\nToo long word, guess again!")
 
             else: 
                 self.guesses = self.guesses + 1
@@ -98,22 +100,31 @@ class Game:
                 if my_word.compare(self.tmp_guess):
                     break
             
-        restart = input("Do you want to restart the game? (y/n)")
+        print(WHITE + LINE * 5)
+        restart = input("\nDo you want to restart the game? (y/n): ")
         
         if restart == "y":
-            print("The game will now restart")
+            print("\nThe game will now restart")
             sleep(2)
             os.system('cls')
             self.__init__()
             self.play_game()
         elif restart == "n":
             os.system('cls')
-            print("You have chosen to exit the game, thank you for playing!")
+            print("\nYou have chosen to exit the game, thank you for playing!")
             exit()
         else:
-            print("Please write y or n")
-            Game()
-            
+            else_restart = input("Please write y or n: ")
+            if else_restart == "y":
+                os.system('cls')
+                self.__init__()
+                self.play_game()
+            elif else_restart == "y":
+                exit()
+            else:
+                print("You are too dumb to play this game...")
+                exit()
+                
 def main():
     new_game = Game()
     new_game.play_game()
