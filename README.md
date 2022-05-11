@@ -61,3 +61,6 @@ Projectlink: https://github.com/ellenjansson/SLUTPROJEKT_2
 - My dad
 
 - Niclas Lund
+
+![image](https://user-images.githubusercontent.com/96123363/167809013-741fb1c1-8bac-4b9c-acf9-812b604134c5.png)
+
