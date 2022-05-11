@@ -32,11 +32,11 @@ To run the program write this into the cmd (terminal)
     py wordle.py
 ```
 
-You are then presented with an input asking for a word.
+Then you are presented with an input asking for a word.
 
 ![image](https://user-images.githubusercontent.com/96123363/167810680-b5b80735-893e-49f0-a8ef-3d722dde0bcd.png)
 
-You answer this by writing you 5 letter word next to the colon (:)
+You answer this by writing your 5 letter word next to the colon (:)
 
 
 ## Example 
