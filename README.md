@@ -27,11 +27,21 @@ No installations is needed for the program.
 
 ## Hur det fungerar (Usage)
 
-***Använd detta utrymme för att visa användbara exempel av hur projektet kan användas. Skärmdumpar, kodexempel och demos passar in här. Du kan också länka till fler resurser, exempelvis en dokumentation.***
+To run the program write this into the cmd (terminal)
+```cmd
+    py wordle.py
+```
 
-## Example (exempelkörning)
+You are then presented with an input asking for a word.
 
-***Visa gärna, genom ett kodblock från din konsol, eller en bild, hur en exempelkörning kan gå till.***
+![image](https://user-images.githubusercontent.com/96123363/167810680-b5b80735-893e-49f0-a8ef-3d722dde0bcd.png)
+
+You answer this by writing you 5 letter word next to the colon (:)
+
+
+## Example 
+
+![image](https://user-images.githubusercontent.com/96123363/167811209-a73f5ecb-c650-4678-b83c-dbdd4a6821e2.png)
 
 ## Roadmap
 
