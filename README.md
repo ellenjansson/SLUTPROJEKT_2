@@ -54,7 +54,7 @@ Changelog in CHANGELOG.md
 
 ## Contribution
 
-No pull requests will be allowed before the assignment is graded. Big changes to the program I wish to be opened as an issue open for discussion on what shall be changed.
+No pull requests will be allowed before the assignment is graded. Big changes to the program I wish to be opened as an issue for discussion on what shall be changed.
 
 ## License
 
