@@ -25,7 +25,7 @@ The program is made as an end project in the programming 1 course.
 ```
 No installations is needed for the program.
 
-## Hur det fungerar (Usage)
+## Usage
 
 To run the program write this into the cmd (terminal)
 ```cmd
