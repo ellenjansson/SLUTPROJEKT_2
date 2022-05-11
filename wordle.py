@@ -1,4 +1,3 @@
-from pdb import Restart
 import random
 import os
 from time import sleep
@@ -7,7 +6,8 @@ from colorama import init
 init()
 
 
-# Constants that have ANSI-code which is used to color boxes in the code. The line is used inbetween guesses in the console.
+# Constants that have ANSI-code which is used to color boxes in the code. 
+# The line is used inbetween guesses in the console.
 BOX = "▉"
 GREEN = "\033[1;32;40m"
 YELLOW = "\033[1;33;40m"
@@ -108,7 +108,6 @@ class Game:
         elif restart == "n":
             os.system('cls')
             print("\nYou have chosen to exit the game, thank you for playing!")
-            exit()
         else:
             else_restart = input("Please write y or n: ")
             if else_restart == "y":
@@ -116,10 +115,10 @@ class Game:
                 self.__init__()
                 self.play_game()
             elif else_restart == "n":
-                exit()
+                print("Too bad. :(")
             else:
                 print("You are too dumb to play this game...")
-                exit()
+                pass
                 
 def main():
     new_game = Game()
